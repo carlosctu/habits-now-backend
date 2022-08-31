@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    internal class BaseRepositoryy<T> : IRepository<T> where T : BaseModel
+    public class BaseRepository<T> : IRepository<T> where T : BaseModel
     {
         public virtual string Create(T model)
         {

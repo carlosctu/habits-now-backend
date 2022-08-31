@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Data.Model
 {
-    public class Task : BaseModel
+    public class Duty : BaseModel
     {
         public string calendar { get; set; }
         public string Title { get; set; }
