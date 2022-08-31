@@ -1,7 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Data.Model;
-using System.Collections.Generic;
-using System.Numerics;
+﻿using Data.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiHabits.Context
 {

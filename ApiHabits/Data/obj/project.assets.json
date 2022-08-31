@@ -818,23 +818,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Nilvando.Fonseca\\.nuget\\packages\\": {},
+    "C:\\Users\\João.Rocha\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Nilvando.Fonseca\\Documents\\Grupo\\ApiHabits\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\HabitsNow\\Back\\habits-now-backend\\ApiHabits\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\Nilvando.Fonseca\\Documents\\Grupo\\ApiHabits\\Data\\Data.csproj",
-      "packagesPath": "C:\\Users\\Nilvando.Fonseca\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Nilvando.Fonseca\\Documents\\Grupo\\ApiHabits\\Data\\obj\\",
+      "projectPath": "C:\\HabitsNow\\Back\\habits-now-backend\\ApiHabits\\Data\\Data.csproj",
+      "packagesPath": "C:\\Users\\João.Rocha\\.nuget\\packages\\",
+      "outputPath": "C:\\HabitsNow\\Back\\habits-now-backend\\ApiHabits\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Nilvando.Fonseca\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\João.Rocha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
