@@ -1,4 +1,5 @@
-﻿using Data.Model;
+﻿using ApiHabits.Context;
+using Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,22 +12,32 @@ namespace Data.Repository
     {
         public virtual string Create(T model)
         {
-            //using (WarrenContext warrenContext = new WarrenContext())
-            //{
-            //    warrenContext.Set<T>().Add(model);
-            //    // Quando manipulo dados dentro do db devo usar o SaveChanges();
-            //    warrenContext.SaveChanges();
-            //}
-            return "Criando";
+            using (HabitContext warrenContext = new())
+            {
+                warrenContext.Set<T>().Add(model);
+                // Quando manipulo dados dentro do db devo usar o SaveChanges();
+                warrenContext.SaveChanges();
+                }
+                return "Criando";
         }
         public virtual string Delete(int Id)
         {
-            //using (WarrenContext warrenContext = new WarrenContext())
-            //{
-            //    warrenContext.Entry<T>(this.GetById(Id)).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-            //    warrenContext.SaveChanges();
-            //}
+            using (HabitContext warrenContext = new())
+            {
+                warrenContext.Entry<T>(this.GetById(Id)).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+                warrenContext.SaveChanges();
+            }
             return "Deletado";
+        }
+        public virtual T GetById(int id)
+        {
+            T model = null;
+            using (HabitContext habitContext = new())
+            {
+                model = habitContext.Set<T>().Find(id);
+            }
+
+            return model;
         }
     }
 }
