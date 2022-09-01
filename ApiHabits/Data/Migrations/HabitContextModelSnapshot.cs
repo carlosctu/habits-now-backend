@@ -43,7 +43,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Duty");
+                    b.ToTable("Duty", (string)null);
                 });
 
             modelBuilder.Entity("Data.Model.Habit", b =>
@@ -68,7 +68,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Habit");
+                    b.ToTable("Habit", (string)null);
                 });
 
             modelBuilder.Entity("Data.Model.User", b =>
@@ -97,7 +97,7 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("User", (string)null);
                 });
 #pragma warning restore 612, 618
         }

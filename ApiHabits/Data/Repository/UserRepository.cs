@@ -1,11 +1,6 @@
 ﻿using ApiHabits.Context;
 using Data.Model;
 using Data.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repository
 {
@@ -15,8 +10,14 @@ namespace Data.Repository
         public override string Create(User model)
         {
             model.Senha = Cryptografy.Criptografar(model.Senha);
-
-            return base.Create(model);
+            if (Exist(model.Email))
+            {
+                return base.Create(model);
+            }
+            else
+            {
+                return "";
+            }
         }
         public User Logon(string email, string senha)
         {
@@ -29,18 +30,5 @@ namespace Data.Repository
             }
             return user;
         }
-        public virtual List<User> GetAll()
-        {
-            List<User> list = new List<User>();
-            using (HabitContext habitContext = new())
-            {
-                list = habitContext.Set<User>().ToList();
-            }
-
-
-
-            return list;
-        }
-       
     }
 }

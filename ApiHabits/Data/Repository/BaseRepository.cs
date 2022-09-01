@@ -1,10 +1,5 @@
 ﻿using ApiHabits.Context;
 using Data.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repository
 {
@@ -17,8 +12,8 @@ namespace Data.Repository
                 warrenContext.Set<T>().Add(model);
                 // Quando manipulo dados dentro do db devo usar o SaveChanges();
                 warrenContext.SaveChanges();
-                }
-                return "Criando";
+            }
+            return "Criando";
         }
         public virtual string Delete(int Id)
         {
@@ -38,6 +33,28 @@ namespace Data.Repository
             }
 
             return model;
+        }
+
+        public virtual List<T> GetAll()
+        {
+            List<T> list = new List<T>();
+            using (HabitContext habitContext = new())
+            {
+                list = habitContext.Set<T>().ToList();
+            }
+
+            return list;
+        }
+
+        public bool Exist(string email)
+        {
+            User user = null;
+            using (HabitContext habitContext = new())
+            {
+
+                user = habitContext.User.Where(u => u.Email == email).FirstOrDefault() ?? null;
+                return user != null ? true : false;
+            }
         }
     }
 }

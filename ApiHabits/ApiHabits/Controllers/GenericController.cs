@@ -1,6 +1,5 @@
 ﻿using Data.Model;
 using Data.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiHabits.Controllers
@@ -9,19 +8,18 @@ namespace ApiHabits.Controllers
     [ApiController]
     public class GenericController<T, R> : ControllerBase where T : BaseModel where R : BaseRepository<T>
     {
-        private R repository;
-
-        public GenericController(R repository)
-        {
-            this.repository = repository;
-        }
+        private R repository = Activator.CreateInstance<R>();
 
         [HttpPost]
-        public virtual string Post(T model)
+        public virtual StatusCodeResult Post(T model)
         {
-            return repository.Create(model);
+            if (String.IsNullOrEmpty(repository.Create(model)))
+            {
+                return new StatusCodeResult(StatusCodes.Status409Conflict);
+            }
+            return new StatusCodeResult(StatusCodes.Status200OK);
         }
-       
+
         [HttpDelete("{id}")]
         public string Delete(int id)
         {
@@ -31,6 +29,12 @@ namespace ApiHabits.Controllers
         public T GetById(int id)
         {
             return repository.GetById(id);
+        }
+
+        [HttpGet]
+        public List<T> Get()
+        {
+            return repository.GetAll();
         }
     }
 }
