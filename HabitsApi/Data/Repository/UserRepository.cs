@@ -10,7 +10,7 @@ namespace Data.Repository
         public override string Create(User model)
         {
             model.Senha = Cryptografy.Criptografar(model.Senha);
-            if (Exist(model.Email))
+            if (Exist(model.Email)!)
             {
                 return base.Create(model);
             }

@@ -15,9 +15,9 @@ namespace ApiHabits.Controllers
         {
             if (String.IsNullOrEmpty(repository.Create(model)))
             {
-                return new StatusCodeResult(StatusCodes.Status409Conflict);
+                return new StatusCodeResult(StatusCodes.Status200OK);
             }
-            return new StatusCodeResult(StatusCodes.Status200OK);
+            return new StatusCodeResult(StatusCodes.Status409Conflict);
         }
 
         [HttpDelete("{id}")]
