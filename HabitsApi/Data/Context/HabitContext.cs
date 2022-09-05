@@ -13,8 +13,8 @@ namespace ApiHabits.Context
         #endregion
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=zuplae.vps-kinghost.net; Port=5441; Database=postgres; UserId=postgres; Password=123456");
-            //optionsBuilder.UseNpgsql("Host=grupo_1; Port=5432; Database=postgres; UserId=postgres; Password=123456");
+            //optionsBuilder.UseNpgsql("Host=zuplae.vps-kinghost.net; Port=5441; Database=postgres; UserId=postgres; Password=123456");
+            optionsBuilder.UseNpgsql("Host=grupo_1; Port=5432; Database=postgres; UserId=postgres; Password=123456");
         }
     }
 }

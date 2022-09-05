@@ -5,7 +5,7 @@ namespace Data.Repository
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseModel
     {
-        public virtual string Create(T model)
+        public virtual bool Create(T model)
         {
             using (HabitContext warrenContext = new())
             {
@@ -13,7 +13,7 @@ namespace Data.Repository
                 // Quando manipulo dados dentro do db devo usar o SaveChanges();
                 warrenContext.SaveChanges();
             }
-            return "Criando";
+            return true;
         }
         public virtual string Delete(int Id)
         {
@@ -46,13 +46,13 @@ namespace Data.Repository
             return list;
         }
 
-        public bool Exist(string email)
+        public virtual bool Exist(string entry)
         {
-            User user = null;
+            T user = null;
             using (HabitContext habitContext = new())
             {
 
-                user = habitContext.User.Where(u => u.Email == email).FirstOrDefault() ?? null;
+                user = habitContext.Set<T>().Where(u => u.Id == int.Parse(entry)).FirstOrDefault() ?? null;
                 return user != null ? true : false;
             }
         }

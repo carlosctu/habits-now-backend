@@ -13,11 +13,15 @@ namespace ApiHabits.Controllers
         [HttpPost]
         public virtual StatusCodeResult Post(T model)
         {
-            if (String.IsNullOrEmpty(repository.Create(model)))
+            if (repository.Create(model)!)
             {
                 return new StatusCodeResult(StatusCodes.Status200OK);
             }
-            return new StatusCodeResult(StatusCodes.Status409Conflict);
+            else
+            {
+
+                return new StatusCodeResult(StatusCodes.Status409Conflict);
+            }
         }
 
         [HttpDelete("{id}")]
@@ -36,5 +40,6 @@ namespace ApiHabits.Controllers
         {
             return repository.GetAll();
         }
+
     }
 }

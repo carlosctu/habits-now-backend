@@ -7,16 +7,18 @@ namespace Data.Repository
     public class UserRepository : BaseRepository<User>
     {
 
-        public override string Create(User model)
+        public override bool Create(User model)
         {
             model.Senha = Cryptografy.Criptografar(model.Senha);
-            if (Exist(model.Email)!)
+            Console.WriteLine(model.Email);
+            if (Exist(model.Email))
             {
                 return base.Create(model);
             }
             else
             {
-                return "";
+                Console.WriteLine(model);
+                return false;
             }
         }
         public User Logon(string email, string senha)
@@ -29,6 +31,27 @@ namespace Data.Repository
 
             }
             return user;
+        }
+
+        public override bool Exist(string entry)
+        {
+            User user = null;
+            using (HabitContext habitContext = new())
+            {
+
+                user = habitContext.User.Where(u => u.Email == entry).FirstOrDefault() ?? null;
+                Console.WriteLine(user);
+                return user == null ? true : false;
+            }
+        }
+        public User GetByEmail(string email)
+        {
+            User result = null;
+            using (HabitContext habit = new())
+            {
+                result = habit.User.Where(u => u.Email == email).FirstOrDefault();
+                return result;
+            }
         }
     }
 }

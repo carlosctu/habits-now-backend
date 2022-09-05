@@ -4,7 +4,7 @@ namespace Data.Repository
 {
     public interface IRepository<T> where T : BaseModel
     {
-        string Create(T model);
+        bool Create(T model);
 
         string Delete(int Id);
 
@@ -13,5 +13,6 @@ namespace Data.Repository
         public List<T> GetAll();
 
         public T GetById(int id);
+
     }
 }
